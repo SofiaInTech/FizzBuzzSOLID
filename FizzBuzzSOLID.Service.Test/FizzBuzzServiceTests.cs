@@ -19,7 +19,7 @@ public class FizzBuzzServiceTests
     [TestCase(32, "32")]
     [TestCase(60, "Fizzbuzz")]
     [TestCase(-18, "Fizz")]
-    [TestCase(0, "0")]
+    [TestCase(0, "Fizzbuzz")]
     [TestCase(333, "Fizz")]
     public void CalculateFizzBuzzResult(int number, string expectedResult)
     {
