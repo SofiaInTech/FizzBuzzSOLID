@@ -1,12 +1,15 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using FizzBuzzSOLID;
+using FizzBuzzSOLID.Service;
+using FizzBuzzSOLID.Service.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
+
 Console.WriteLine("Fizz Buzz SOLID");
 Console.WriteLine("----------------------");
 
-// TODO: Register FizzBuzzService here via DI.
+var services = new ServiceCollection().AddSingleton<IFizzBuzzService>(new FizzBuzzService());
 
-var range = Enumerable.Range(1, 99);
-
-foreach (int number in range) {
-    Console.WriteLine(number);
+using (var serviceProvider = services.BuildServiceProvider())
+{
+    var fizzBuzzService = serviceProvider.GetService<IFizzBuzzService>();
+    FizzBuzzFunctions.Output(fizzBuzzService);
 }
-
